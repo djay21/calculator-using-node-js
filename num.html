@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+ <script>
+  function login(event)
+ { event.preventDefault();
+    var number1= $("#num1").val();
+    var number2= $("#num2").val();
+    var operator= $("#op").val();
+    $.post("http://localhost:8080", {number1: number1, number2: number2, operator:operator},(data, status) => {
+        //alert(data);
+        $(resu).val(data);
+    });
+ }</script>
+<body>
+
+    <form>
+        NUMBER 1: <br>
+        <input type = "text" id="num1" placeholder="number1">
+        <br><br>
+        NUMBER 2: <br>
+        <input type = "text" id="num2" placeholder="number2">
+        <br>
+      
+        <br><br>
+        <input type = "text" id="op" placeholder="operator">
+        
+        <input type="text" id ="resu" disabled>
+
+        <input type="submit" onclick="login(event)">
+    </form>
+</body>
